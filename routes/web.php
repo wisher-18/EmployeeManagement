@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\employeController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +24,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/employes', [employeController::class, 'index'])->name('employe.index');
-    Route::get('/employes/create', [employeController::class, 'create'])->name('employe.create');
-    Route::post('/employes/store', [employeController::class, 'store'])->name('employe.store');
-    Route::get('/user/edit/{id}', [employeController::class, 'edit'])->name('employe.edit');
-    Route::post('/user/update/{id}', [employeController::class, 'update'])->name('employe.update');
-    Route::delete('/employes/delete/{id}', [employeController::class, 'destroy'])->name('employe.destroy');
+    Route::get('/employees', [EmployeeController::class, 'index'])->name('employee.index');
+    Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employee.create');
+    Route::post('/employees/store', [EmployeeController::class, 'store'])->name('employee.store');
+    Route::get('/user/edit/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
+    Route::post('/user/update/{id}', [EmployeeController::class, 'update'])->name('employee.update');
+    Route::delete('/employees/delete/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
+    Route::get('/employees/{id}', [EmployeeController::class, 'show'])->name('employee.show');
    
 });

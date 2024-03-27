@@ -8,7 +8,7 @@
                 <div class="card-header">Edit Employee</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('employe.update' ,$user->id)}}" name="updateForm" id="updateForm" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('employee.update', $user->id)}}" name="updateForm" id="updateForm" enctype="multipart/form-data">
                           <div class="mb-3">
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -108,7 +108,7 @@
     let form_data = new FormData(this);
     $('button[type=submit]').prop('disabled',true);
     $.ajax({
-         url: "{{route('employe.update',$user->id)}}",
+         url: "{{route('employee.update', $user->id)}}",
         type:'post',
         data:form_data,
         contentType: false,
@@ -118,7 +118,7 @@
             $('button[type=submit]').prop('disabled', false);
 
             if(response['status'] == true) {
-                const redirectToList = '{{ route("employe.index") }}';
+                const redirectToList = '{{ route("employee.index") }}';
                 window.location.href = redirectToList ;
                 $('#name').removeClass('is-invalid').siblings('p').removeClass('invalid-feedback').html("");
                 $('#email').removeClass('is-invalid').siblings('p').removeClass('invalid-feedback').html("");
